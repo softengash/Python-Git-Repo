@@ -37,7 +37,7 @@ Calculating RMSE between the actual and predicted ones we can evaluate the model
 In fact considering it as an optimization problem to keep the error minimum along with regularization to control overfitting, a very nice model can be developed for predicting the ratings.
 
 
-Note: It will be better to discuss more details in person
+Note: Lets discuss more details in person
 
 
 
