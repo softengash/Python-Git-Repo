@@ -1,7 +1,12 @@
+Q1: 
+
 Give us your suggestions on how we could make our data set better / more useful
 
-1. To include customer profile data
+1. To include customer data
 2. To include purchase data relating customer and products.
+
+
+Q2: 
 
 With the given dataset, can you come up with a scientific approach and model for our ranking?
 
@@ -13,13 +18,15 @@ Based on the association rules within the purchases made we can design the promo
 
 And using the smilarity results, similar products can be shown along with the frequent items for a user to enhance the chances of additional purchases.
 
-e.g. if a pant is mostly purchased along with a belt then promotion can be run on patnts and price can be raised for the belts. And items similar to them can be shown along with them to increases chances of additional sale.
+e.g. if a pant is mostly purchased along with a belt then promotion can be run on pants and price can be raised for the belts. And items similar to them can be shown along with them to increases chances of additional sale.
 
 Method 2
 
 Also another way is to rate items based on their net purchases(excluding returns) made in a category, by a user or in just general e.g rating of 1-10 
 
-Apart from using these ratings for ranking the products, these rating data can be used to predict new ratings via modern latent factor recommendor system using collaborating filtering and factorization of the ratings for the prediction.
+Apart from using these ratings for ranking the products in that context, these rating data can be used to predict new ratings via modern latent factor recommendor system using collaborating filtering and factorization of the ratings for the prediction.
+
+Q3:
 
 How would you test, train, and evaluate your model?
 
@@ -28,6 +35,9 @@ The basic idea to evaluate such models is to keep aside some known ratings and p
 Calculating RMSE between the actual and predicted ones we can evaluate the model. Lower RMSE, better the model.
 
 In fact considering it as an optimization problem to keep the error minimum along with regularization to control overfitting, a very nice model can be developed for predicting the ratings.
+
+
+Note: It will be better to discuss more details in person
 
 
 
