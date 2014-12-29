@@ -1,26 +1,33 @@
 
-# coding: utf-8
 
-# 1A
+############### 1 ###############
 
-# In[10]:
+Code: Python
 
 array = [['a','b','c'],['d','e','f']]
-
-
-# In[12]:
 
 for item in sum(array,[]):
     print item
 
+Output:
 
-# 1B
+a
+b
+c
+d
+e
+f
 
-                Have a look at "programming-tasks/top10_sample.csv"
+
+############### 2 ###############
+
+# Problem:
+
+Have a look at "programming-tasks/top10_sample.csv"
 Each line in this file represents a list of Brand in our store.
 Write a script to print out a list of brand names and their occurrence counts (sorted).
                 
-# In[42]:
+# Code: Python
 
 class MapReduce:
     def __init__(self):
@@ -41,8 +48,7 @@ class MapReduce:
         for key in self.intermediate:
             reducer(key, self.intermediate[key])
 
-
-# In[43]:
+_________________________________________________
 
 mr = MapReduce()
 
@@ -56,9 +62,7 @@ def reducer(key, list_of_values):
     for v in list_of_values:
       total += v
     mr.emit((key, total))
-
-
-# In[44]:
+__________________________________________________
 
 import csv
 
@@ -75,16 +79,40 @@ for item in sorted(mr.result):
     print item
 
 
-# SQL
+# Output:
 
-# a) What is the relation between Database, Schema, Tables, View in PostgreSQL / MySQL?
-# b) What is the difference between a table and a view?
-# c) Table reporting.items has 4 columns: Item_Code - Date - Visits - Orders
-# Write a query to get total number of Visit over all Item_Codes for the day '2013-01-12'.
-# Write a query to get total number of visit over all Item_Codes for every year?.
-# d) As a DBA: in PostgreSQL DB, write query(s) needed to give account "buying" access to all tables currently in schema "sales", and all future Tables created in schema "sales".
+('24:01', 795)
+('2pm.com', 380)
+('66\xc2\xb030', 1)
+('A Time Machine', 24)
+('ACCA KAPPA', 6)
+('ALBA', 41)
+('ALDO', 129)
+('AMBROS', 108)
+('AR by Alfio Raldo', 63)
+('ASTALIFT', 1)
+('ATYPICAL', 36)
+('ATYPICAL Premium', 19)
+('AVI-8', 61)
+('AVIVA', 13)
+('Abaya Suraya', 4)
+('Ad Jeans', 124)
+('Adidas', 15)
+….(truncated output)
 
-# In[ ]:
+
+############### 3 ###############
+
+# Problem
+
+a) What is the relation between Database, Schema, Tables, View in PostgreSQL / MySQL?
+b) What is the difference between a table and a view?
+c) Table reporting.items has 4 columns: Item_Code - Date - Visits - Orders
+Write a query to get total number of Visit over all Item_Codes for the day '2013-01-12'.
+Write a query to get total number of visit over all Item_Codes for every year?.
+d) As a DBA: in PostgreSQL DB, write query(s) needed to give account "buying" access to all tables currently in schema "sales", and all future Tables created in schema "sales".
+
+# Code: SQL
 
 select sum(Visits) from table where Date='2013-01-12'
 
@@ -95,18 +123,21 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA sales TO buying
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA sales TO buying
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL SEQUENCES IN SCHEMA sales TO buying
 
+############### 4 ###############
 
-# a) Write a bash script for the below set of tasks:
-# [
-# - connect to ftp server (host=10.11.12.13 port=22 username=helloFTP password=world)
-# - download all files that have their name started with "webtrekk_marketing" into "home/Marketing Report/Data/"
-# - run ZMR.py which is located in "home/Marketing Report/Scripts/"
-# - run UpdateWebtrekk.sql which is located in "home/Marketing Report/Scripts/" on a PostgreSQL DB (host=10.11.12.13 port=5439 database=zalora username=helloDB password=world)
-# ]
-# How would you schedule the above as a cron job every day at 2.35am?
+# Problem
 
-                # content of file test.sh
-# Can add return code check if there are dependencies
+a) Write a bash script for the below set of tasks:
+[
+- connect to ftp server (host=10.11.12.13 port=22 username=helloFTP password=world)
+- download all files that have their name started with "webtrekk_marketing" into "home/Marketing Report/Data/"
+- run ZMR.py which is located in "home/Marketing Report/Scripts/"
+- run UpdateWebtrekk.sql which is located in "home/Marketing Report/Scripts/" on a PostgreSQL DB (host=10.11.12.13 port=5439 database=zalora username=helloDB password=world)
+ ]
+How would you schedule the above as a cron job every day at 2.35am?
+
+
+# Code: Shell Script
 
 #!/bin/sh
 echo 'Start'
@@ -128,49 +159,35 @@ echo 'End'
 else echo 'Download failed'
 fi
 
-                
-                # use crontab -l to list all the crons
+-- schedule --
+
+# use crontab -l to list all the crons
+
 First execute "crontab -e"
 Append cron job "35 2 * * * /home/Marketing Report/Scripts/test.sh > output.log"
 Save and close the file
-                
-                b) Have a look at the folder "/programming-tasks/bash/"
+
+
+############### 5 ###############
+        
+# Problem
+
+Have a look at the folder "/programming-tasks/bash/"
 - Write a bash script to rename all files below from "zalora-*" to "Zalora-*"
 - All Zalora-* files contain a single string: "this is a test." (with a new line at the end):
     Write a shell script to change the content of those files to all uppercase.
     Write a shell script to remove all dot character (.) within those files.
                 
-# In[67]:
+# Code: Python
 
-get_ipython().system(u'for file in bash/zalora*; do mv "$file" "${file//zalora/Zalora}"; done')
-
-
-# In[96]:
-
-get_ipython().system(u'ls -lrt bash')
+-- renaming -- 
+for file in bash/zalora*; do mv "$file" "${file//zalora/Zalora}"; done'
 
 
-# In[127]:
+-- uppercase content --
 
-get_ipython().system(u'head bash/Zalora*')
+for file in bash/Zalora*; do sed "y/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz/" $file > temp.txt; mv temp.txt $file; done
 
+-- dot removal --
 
-                #toggles the case
-!for file in bash/Zalora*; do sed "y/abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz/" $file > temp.txt; mv temp.txt $file; done
-                
-# In[128]:
-
-get_ipython().system(u'head bash/Zalora*')
-
-
-                !for file in bash/Zalora*; do sed 's/\.//g' $file > temp.txt; mv temp.txt $file; done
-                
-# In[129]:
-
-get_ipython().system(u'head bash/Zalora*')
-
-
-# In[ ]:
-
-
-
+for file in bash/Zalora*; do sed 's/\.//g' $file > temp.txt; mv temp.txt $file; done
