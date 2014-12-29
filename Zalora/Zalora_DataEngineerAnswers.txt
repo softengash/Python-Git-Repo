@@ -27,7 +27,7 @@ Have a look at "programming-tasks/top10_sample.csv"
 Each line in this file represents a list of Brand in our store.
 Write a script to print out a list of brand names and their occurrence counts (sorted).
                 
-# Code: Python
+# Code: Python (in MR framework for faster turnaround in case data is big)
 
 class MapReduce:
     def __init__(self):
@@ -70,9 +70,6 @@ data = open('top10_sample.csv')
 inputdata = csv.reader(data)
 mr.execute(inputdata, mapper, reducer)
 data.close()
-
-#for k,v in sorted(mr.intermediate.items()):
-#    print k,v
 
 
 for item in sorted(mr.result):
